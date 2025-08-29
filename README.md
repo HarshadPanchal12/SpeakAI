@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎤 SpeakAI Backend
 
 Complete Node.js backend for the SpeakAI platform - AI-powered public speaking confidence training.
@@ -198,3 +199,7 @@ tail -f logs/error.log
 ## 📝 License
 
 MIT License - see LICENSE file for details.
+=======
+# SpeakAI
+stage fear removal
+>>>>>>> d66dada2387158c3ec67ea8d7bb780adfad094f1
