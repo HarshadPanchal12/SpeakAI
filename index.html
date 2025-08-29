@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakAI - Transform Fear Into Confidence</title>
+    <meta name="description" content="AI-Powered Stage Fear Removal Platform - Join thousands who overcame their fear of public speaking">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="microphone-loader">
+                <div class="mic-body"></div>
+                <div class="mic-head"></div>
+                <div class="sound-wave wave-1"></div>
+                <div class="sound-wave wave-2"></div>
+                <div class="sound-wave wave-3"></div>
+            </div>
+            <div class="loading-text">
+                <span class="loading-word">Initializing</span>
+                <span class="loading-word">SpeakAI</span>
+                <span class="loading-dots">...</span>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">Loading your confidence journey...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-header" id="navigation">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-microphone-alt"></i>
+                </div>
+                <span class="brand-text">SpeakAI</span>
+            </div>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#solution" class="nav-link">Features</a>
+                <a href="#testimonials" class="nav-link">Stories</a>
+                <a href="#" class="nav-link" id="helpLink">Help</a>
+                <button class="cta-nav-btn" id="ctaNavBtn">Start Journey</button>
+            </div>
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page Content -->
+    <main class="main-content" id="landingPage">
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-bg">
+                <canvas id="threeCanvas"></canvas>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="title-word">Transform</span>
+                            <span class="title-word highlight">Fear</span>
+                            <span class="title-word">Into</span>
+                            <span class="title-word confidence">Confidence</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            AI-powered stage fear removal platform that helps you overcome public speaking anxiety 
+                            and become the confident speaker you were meant to be.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">10,000+</div>
+                                <div class="stat-label">Users Helped</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">87%</div>
+                                <div class="stat-label">Success Rate</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">73%</div>
+                                <div class="stat-label">Avg Improvement</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn--primary hero-cta" id="heroCta">
+                            <span class="btn-text">Start Your Transformation</span>
+                            <i class="fas fa-arrow-right btn-icon"></i>
+                        </button>
+                        <button class="btn btn--outline demo-btn" id="demoBtn">
+                            <i class="fas fa-play"></i>
+                            <span>Watch Demo</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="problem-section" id="problem">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">The Fear That Holds You Back</h2>
+                    <p class="section-subtitle">
+                        Public speaking anxiety affects millions, but it doesn't have to control your future.
+                    </p>
+                </div>
+                
+                <div class="transformation-visual">
+                    <div class="before-state">
+                        <div class="fear-indicators">
+                            <div class="fear-bubble">Sweaty Palms</div>
+                            <div class="fear-bubble">Racing Heart</div>
+                            <div class="fear-bubble">Shaky Voice</div>
+                            <div class="fear-bubble">Blank Mind</div>
+                        </div>
+                        <div class="audience-representation before">
+                            <div class="audience-member scared"></div>
+                            <div class="audience-member scared"></div>
+                            <div class="audience-member scared"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="transformation-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="after-state">
+                        <div class="confidence-indicators">
+                            <div class="confidence-bubble">Clear Voice</div>
+                            <div class="confidence-bubble">Steady Presence</div>
+                            <div class="confidence-bubble">Engaging Content</div>
+                            <div class="confidence-bubble">Natural Flow</div>
+                        </div>
+                        <div class="audience-representation after">
+                            <div class="audience-member confident"></div>
+                            <div class="audience-member confident"></div>
+                            <div class="audience-member confident"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="solution-section" id="solution">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">AI-Powered Transformation</h2>
+                    <p class="section-subtitle">
+                        Advanced technology meets proven psychology to create your personalized path to confidence.
+                    </p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <h3 class="feature-title">Real-time Speech Analysis</h3>
+                        <p class="feature-description">AI analyzes your speech patterns instantly, providing immediate feedback on pace, tone, and clarity.</p>
+                        <div class="feature-visual">
+                            <div class="waveform">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="feature-title">Personalized Coaching</h3>
+                        <p class="feature-description">Customized feedback and exercises tailored to your unique speaking challenges and goals.</p>
+                        <div class="feature-visual">
+                            <div class="coaching-nodes">
+                                <div class="node active"></div>
+                                <div class="node"></div>
+                                <div class="node"></div>
+                                <div class="connection"></div>
+                                <div class="connection"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="feature-title">Progress Tracking</h3>
+                        <p class="feature-description">Watch your confidence grow over time with detailed analytics and milestone celebrations.</p>
+                        <div class="feature-visual">
+                            <div class="progress-chart">
+                                <div class="chart-bar" style="height: 30%"></div>
+                                <div class="chart-bar" style="height: 50%"></div>
+                                <div class="chart-bar" style="height: 70%"></div>
+                                <div class="chart-bar" style="height: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Success Stories</h2>
+                    <p class="section-subtitle">
+                        Real people, real transformations. See how SpeakAI changed their lives.
+                    </p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">
+                                "Went from terrified to confident presenter in just 3 months. SpeakAI's AI coaching made all the difference."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">Sarah Chen</div>
+                                    <div class="author-role">Software Engineer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="improvement-meter">
+                            <div class="meter-label">Improvement</div>
+                            <div class="meter-value">85%</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">
+                                "SpeakAI helped me ace my interview presentations. The personalized feedback was incredible."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">Raj Patel</div>
+                                    <div class="author-role">MBA Student</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="improvement-meter">
+                            <div class="meter-label">Improvement</div>
+                            <div class="meter-value">78%</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card glass-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-quote">
+                                "Now I actually enjoy public speaking! The confidence boost has transformed my career."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="author-info">
+                                    <div class="author-name">Maria Rodriguez</div>
+                                    <div class="author-role">Marketing Manager</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="improvement-meter">
+                            <div class="meter-label">Improvement</div>
+                            <div class="meter-value">92%</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" data-width="92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="cta-section" id="cta">
+            <div class="cta-bg">
+                <canvas id="ctaCanvas"></canvas>
+            </div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Transform Your Fear?</h2>
+                    <p class="cta-subtitle">
+                        Join thousands who overcame their fear and discovered their confident voice.
+                    </p>
+                    <div class="cta-actions">
+                        <button class="btn btn--primary cta-primary" id="ctaPrimary">
+                            <span class="btn-text">Start Your Transformation</span>
+                            <i class="fas fa-rocket btn-icon"></i>
+                        </button>
+                        <div class="cta-note">
+                            No credit card required • 50,000+ sessions completed
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="brand-icon">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <span class="brand-text">SpeakAI</span>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#" target="_blank">Privacy Policy</a>
+                        <a href="#" target="_blank">Terms of Service</a>
+                        <a href="#" target="_blank">Support</a>
+                        <a href="#" target="_blank">About</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 SpeakAI. All rights reserved. Transform fear into confidence.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Authentication Pages -->
+    <div class="auth-container hidden" id="authContainer">
+        <div class="auth-background">
+            <canvas id="authCanvas"></canvas>
+        </div>
+        <div class="auth-content">
+            <!-- Login Form -->
+            <div class="auth-form active" id="loginForm">
+                <div class="auth-header">
+                    <div class="auth-brand">
+                        <div class="brand-icon">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <span class="brand-text">SpeakAI</span>
+                    </div>
+                    <h2>Welcome Back</h2>
+                    <p>Continue your confidence journey</p>
+                </div>
+                
+                <form class="form" id="loginFormElement">
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+                        <div class="form-error" id="loginEmailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-input">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" id="loginPasswordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error" id="loginPasswordError"></div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-link" id="forgotPasswordLink">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width" id="loginBtn">
+                        <span class="btn-text">Sign In</span>
+                        <div class="btn-loader hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                    
+                    <div class="auth-divider">
+                        <span>Don't have an account?</span>
+                    </div>
+                    
+                    <button type="button" class="btn btn--outline btn--full-width" id="switchToRegister">
+                        Create Account
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Register Form -->
+            <div class="auth-form" id="registerForm">
+                <div class="auth-header">
+                    <div class="auth-brand">
+                        <div class="brand-icon">
+                            <i class="fas fa-microphone-alt"></i>
+                        </div>
+                        <span class="brand-text">SpeakAI</span>
+                    </div>
+                    <h2>Start Your Journey</h2>
+                    <p>Create your account and transform fear into confidence</p>
+                </div>
+                
+                <form class="form" id="registerFormElement">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="registerName" placeholder="Enter your full name" required>
+                        <div class="form-error" id="registerNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
+                        <div class="form-error" id="registerEmailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-input">
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Create a strong password" required>
+                            <button type="button" class="password-toggle" id="registerPasswordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <div class="strength-text">Password strength: <span>Enter password</span></div>
+                        </div>
+                        <div class="form-error" id="registerPasswordError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                        </label>
+                        <div class="form-error" id="agreeTermsError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn--primary btn--full-width" id="registerBtn">
+                        <span class="btn-text">Create Account</span>
+                        <div class="btn-loader hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                    
+                    <div class="auth-divider">
+                        <span>Already have an account?</span>
+                    </div>
+                    
+                    <button type="button" class="btn btn--outline btn--full-width" id="switchToLogin">
+                        Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container hidden" id="dashboardContainer">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <span class="brand-text">SpeakAI</span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="practice">
+                    <i class="fas fa-microphone"></i>
+                    <span>Practice</span>
+                </a>
+                <a href="#" class="nav-item" data-page="progress">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progress</span>
+                </a>
+                <a href="#" class="nav-item" data-page="achievements">
+                    <i class="fas fa-trophy"></i>
+                    <span>Achievements</span>
+                </a>
+                <a href="#" class="nav-item" data-page="leaderboard">
+                    <i class="fas fa-crown"></i>
+                    <span>Leaderboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="history">
+                    <i class="fas fa-history"></i>
+                    <span>History</span>
+                </a>
+                <a href="#" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" data-page="help">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Harshad</div>
+                        <div class="user-level">New Speaker</div>
+                    </div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="dashboard-main">
+            <!-- Dashboard Page -->
+            <div class="page active" id="dashboardPage">
+                <header class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Welcome back, Harshad! 👋</h1>
+                        <p class="page-subtitle">You're just getting started on your confidence journey. Let's begin!</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--primary" id="quickStartBtn">
+                            <i class="fas fa-play"></i>
+                            <span>Quick Start</span>
+                        </button>
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="dashboard-content">
+                    <!-- Welcome Message for New User -->
+                    <div class="welcome-banner">
+                        <div class="welcome-content">
+                            <div class="welcome-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="welcome-text">
+                                <h3>Welcome to SpeakAI!</h3>
+                                <p>Let's get you started with your first practice session. Choose your comfort level below.</p>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary" id="startJourneyBtn">
+                            <span>Start Your Journey</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon sessions">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Sessions Completed</div>
+                                <div class="stat-change new">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Ready to start</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon confidence">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">0%</div>
+                                <div class="stat-label">Confidence Score</div>
+                                <div class="stat-change new">
+                                    <i class="fas fa-seedling"></i>
+                                    <span>Let's grow this!</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon streak">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Day Streak</div>
+                                <div class="stat-change new">
+                                    <i class="fas fa-star"></i>
+                                    <span>Start today!</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon points">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Points Earned</div>
+                                <div class="stat-change new">
+                                    <i class="fas fa-gift"></i>
+                                    <span>Earn rewards</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Levels -->
+                    <div class="section">
+                        <div class="section-header">
+                            <h2 class="section-title">Choose Your Level</h2>
+                            <p class="section-description">Start with the level that feels comfortable and progress at your own pace.</p>
+                        </div>
+
+                        <div class="levels-grid">
+                            <div class="level-card easy" data-level="easy">
+                                <div class="level-header">
+                                    <div class="level-icon">🟢</div>
+                                    <div class="level-badge">Easy</div>
+                                </div>
+                                <div class="level-content">
+                                    <h3 class="level-title">Basic Speech Practice</h3>
+                                    <p class="level-description">Short 1-3 minute practice sessions. Perfect for beginners building fundamental confidence.</p>
+                                    <div class="level-stats">
+                                        <div class="level-duration">
+                                            <i class="fas fa-clock"></i>
+                                            <span>1-3 mins</span>
+                                        </div>
+                                        <div class="level-sessions">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>0/∞ sessions</span>
+                                        </div>
+                                    </div>
+                                    <div class="level-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                        <div class="progress-text">0% Complete</div>
+                                    </div>
+                                </div>
+                                <div class="level-footer">
+                                    <button class="btn btn--primary btn--full-width level-start-btn">
+                                        <i class="fas fa-play"></i>
+                                        <span>Start Practice</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="level-card medium" data-level="medium">
+                                <div class="level-header">
+                                    <div class="level-icon">🟡</div>
+                                    <div class="level-badge">Medium</div>
+                                </div>
+                                <div class="level-content">
+                                    <h3 class="level-title">Intermediate Presentations</h3>
+                                    <p class="level-description">3-5 minute structured presentations. Build storytelling and engagement skills.</p>
+                                    <div class="level-stats">
+                                        <div class="level-duration">
+                                            <i class="fas fa-clock"></i>
+                                            <span>3-5 mins</span>
+                                        </div>
+                                        <div class="level-sessions">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>0/∞ sessions</span>
+                                        </div>
+                                    </div>
+                                    <div class="level-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                        <div class="progress-text">0% Complete</div>
+                                    </div>
+                                </div>
+                                <div class="level-footer">
+                                    <button class="btn btn--primary btn--full-width level-start-btn">
+                                        <i class="fas fa-play"></i>
+                                        <span>Start Practice</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="level-card hard" data-level="hard">
+                                <div class="level-header">
+                                    <div class="level-icon">🔴</div>
+                                    <div class="level-badge">Hard</div>
+                                </div>
+                                <div class="level-content">
+                                    <h3 class="level-title">Advanced Public Speaking</h3>
+                                    <p class="level-description">5+ minute complex presentations. Master advanced techniques and handle Q&A sessions.</p>
+                                    <div class="level-stats">
+                                        <div class="level-duration">
+                                            <i class="fas fa-clock"></i>
+                                            <span>5+ mins</span>
+                                        </div>
+                                        <div class="level-sessions">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>0/∞ sessions</span>
+                                        </div>
+                                    </div>
+                                    <div class="level-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                        <div class="progress-text">0% Complete</div>
+                                    </div>
+                                </div>
+                                <div class="level-footer">
+                                    <button class="btn btn--primary btn--full-width level-start-btn">
+                                        <i class="fas fa-play"></i>
+                                        <span>Start Practice</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daily Goals -->
+                    <div class="section">
+                        <div class="section-header">
+                            <h2 class="section-title">Daily Goals</h2>
+                            <p class="section-description">Small steps lead to big transformations. Set your pace!</p>
+                        </div>
+
+                        <div class="goals-grid">
+                            <div class="goal-card">
+                                <div class="goal-header">
+                                    <div class="goal-icon">
+                                        <i class="fas fa-target"></i>
+                                    </div>
+                                    <div class="goal-title">Practice Sessions</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="goal-numbers">
+                                        <span class="current">0</span>
+                                        <span class="separator">/</span>
+                                        <span class="target">1</span>
+                                    </div>
+                                    <div class="progress-ring">
+                                        <svg class="progress-svg" viewBox="0 0 36 36">
+                                            <path class="progress-background" d="M18 2.0845
+                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                            <path class="progress-foreground" d="M18 2.0845
+                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                stroke-dasharray="0, 100"/>
+                                        </svg>
+                                        <div class="progress-percentage">0%</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="goal-card">
+                                <div class="goal-header">
+                                    <div class="goal-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="goal-title">Practice Minutes</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="goal-numbers">
+                                        <span class="current">0</span>
+                                        <span class="separator">/</span>
+                                        <span class="target">15</span>
+                                    </div>
+                                    <div class="progress-ring">
+                                        <svg class="progress-svg" viewBox="0 0 36 36">
+                                            <path class="progress-background" d="M18 2.0845
+                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                            <path class="progress-foreground" d="M18 2.0845
+                                                a 15.9155 15.9155 0 0 1 0 31.831
+                                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                                stroke-dasharray="0, 100"/>
+                                        </svg>
+                                        <div class="progress-percentage">0%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tips for New Users -->
+                    <div class="section">
+                        <div class="section-header">
+                            <h2 class="section-title">Getting Started Tips</h2>
+                        </div>
+                        <div class="tips-container">
+                            <div class="tip-card">
+                                <div class="tip-icon">💡</div>
+                                <div class="tip-text">Start with easy level to build basic confidence</div>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">⏰</div>
+                                <div class="tip-text">Practice for just 5 minutes daily to see improvement</div>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">📝</div>
+                                <div class="tip-text">Focus on one skill at a time</div>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🎯</div>
+                                <div class="tip-text">Don't worry about perfection, focus on improvement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Session Page -->
+            <div class="page" id="practicePage">
+                <header class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Practice Session</h1>
+                        <p class="page-subtitle">Choose your practice type and start building confidence</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn--outline" id="voiceSettingsBtn">
+                            <i class="fas fa-microphone-slash"></i>
+                            <span>Voice Settings</span>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="practice-content">
+                    <!-- Practice Type Selection -->
+                    <div class="practice-types">
+                        <h3>Select Practice Type</h3>
+                        <div class="practice-grid">
+                            <div class="practice-type-card" data-type="freestyle">
+                                <div class="practice-icon">🎤</div>
+                                <h4>Freestyle Speaking</h4>
+                                <p>Speak on any topic of your choice</p>
+                                <div class="practice-duration">Flexible duration</div>
+                            </div>
+                            <div class="practice-type-card" data-type="guided">
+                                <div class="practice-icon">📝</div>
+                                <h4>Guided Practice</h4>
+                                <p>Follow prompts and structured exercises</p>
+                                <div class="practice-duration">Fixed duration</div>
+                            </div>
+                            <div class="practice-type-card" data-type="interview">
+                                <div class="practice-icon">💼</div>
+                                <h4>Interview Simulation</h4>
+                                <p>Practice common interview scenarios</p>
+                                <div class="practice-duration">10-15 mins</div>
+                            </div>
+                            <div class="practice-type-card" data-type="presentation">
+                                <div class="practice-icon">📊</div>
+                                <h4>Presentation Mode</h4>
+                                <p>Practice formal presentations</p>
+                                <div class="practice-duration">5-20 mins</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Practice Session Interface -->
+                    <div class="practice-session hidden" id="practiceSession">
+                        <div class="session-header">
+                            <div class="session-info">
+                                <h3 id="sessionTitle">Freestyle Speaking</h3>
+                                <div class="session-meta">
+                                    <span class="session-level">Easy Level</span>
+                                    <span class="session-duration">3:00</span>
+                                </div>
+                            </div>
+                            <button class="btn btn--outline session-end" id="endSessionBtn">
+                                <i class="fas fa-stop"></i>
+                                <span>End Session</span>
+                            </button>
+                        </div>
+
+                        <div class="session-interface">
+                            <div class="session-visual">
+                                <div class="confidence-meter">
+                                    <div class="meter-label">Live Confidence</div>
+                                    <div class="meter-value" id="liveConfidence">0%</div>
+                                    <div class="meter-ring">
+                                        <svg class="confidence-svg" viewBox="0 0 100 100">
+                                            <circle class="confidence-bg" cx="50" cy="50" r="45"/>
+                                            <circle class="confidence-fill" cx="50" cy="50" r="45" 
+                                                stroke-dasharray="283" stroke-dashoffset="283"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="waveform-display">
+                                    <canvas id="waveformCanvas" width="600" height="150"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="session-controls">
+                                <button class="control-btn record-btn" id="recordBtn">
+                                    <i class="fas fa-microphone"></i>
+                                    <span>Start Recording</span>
+                                </button>
+                                <button class="control-btn pause-btn hidden" id="pauseBtn">
+                                    <i class="fas fa-pause"></i>
+                                    <span>Pause</span>
+                                </button>
+                                <button class="control-btn resume-btn hidden" id="resumeBtn">
+                                    <i class="fas fa-play"></i>
+                                    <span>Resume</span>
+                                </button>
+                            </div>
+
+                            <div class="session-feedback">
+                                <div class="feedback-item">
+                                    <div class="feedback-icon">
+                                        <i class="fas fa-volume-up"></i>
+                                    </div>
+                                    <div class="feedback-content">
+                                        <div class="feedback-label">Voice Clarity</div>
+                                        <div class="feedback-bar">
+                                            <div class="feedback-fill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feedback-item">
+                                    <div class="feedback-icon">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                    </div>
+                                    <div class="feedback-content">
+                                        <div class="feedback-label">Speaking Pace</div>
+                                        <div class="feedback-bar">
+                                            <div class="feedback-fill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feedback-item">
+                                    <div class="feedback-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="feedback-content">
+                                        <div class="feedback-label">Confidence</div>
+                                        <div class="feedback-bar">
+                                            <div class="feedback-fill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="speech-to-text">
+                                <h4>Live Transcript</h4>
+                                <div class="transcript-display" id="transcriptDisplay">
+                                    Start speaking to see live transcript...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Pages (Progress, Achievements, etc.) -->
+            <div class="page" id="progressPage">
+                <header class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Your Progress</h1>
+                        <p class="page-subtitle">Track your confidence journey over time</p>
+                    </div>
+                </header>
+                <div class="progress-content">
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>No Progress Data Yet</h3>
+                        <p>Complete your first practice session to start tracking your progress!</p>
+                        <button class="btn btn--primary" id="startFirstSession">
+                            <i class="fas fa-play"></i>
+                            <span>Start Your First Session</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements Page -->
+            <div class="page" id="achievementsPage">
+                <header class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Achievements</h1>
+                        <p class="page-subtitle">Unlock badges and celebrate your milestones</p>
+                    </div>
+                </header>
+                <div class="achievements-content">
+                    <div class="achievements-grid">
+                        <div class="achievement-card locked">
+                            <div class="achievement-icon">🎯</div>
+                            <div class="achievement-content">
+                                <h3>First Steps</h3>
+                                <p>Complete your first practice session</p>
+                                <div class="achievement-points">+10 points</div>
+                            </div>
+                            <div class="achievement-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card locked">
+                            <div class="achievement-icon">📅</div>
+                            <div class="achievement-content">
+                                <h3>Consistent Learner</h3>
+                                <p>Practice for 3 consecutive days</p>
+                                <div class="achievement-points">+25 points</div>
+                            </div>
+                            <div class="achievement-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card locked">
+                            <div class="achievement-icon">💪</div>
+                            <div class="achievement-content">
+                                <h3>Confidence Builder</h3>
+                                <p>Reach 50% confidence score</p>
+                                <div class="achievement-points">+50 points</div>
+                            </div>
+                            <div class="achievement-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-card locked">
+                            <div class="achievement-icon">👑</div>
+                            <div class="achievement-content">
+                                <h3>Level Master</h3>
+                                <p>Complete all sessions in one level</p>
+                                <div class="achievement-points">+100 points</div>
+                            </div>
+                            <div class="achievement-status">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page" id="settingsPage">
+                <header class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Settings</h1>
+                        <p class="page-subtitle">Customize your SpeakAI experience</p>
+                    </div>
+                </header>
+                <div class="settings-content">
+                    <div class="settings-sections">
+                        <div class="settings-section">
+                            <h3>Appearance</h3>
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <label>Theme</label>
+                                    <p>Choose your preferred theme</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="form-control" id="themeSelect">
+                                        <option value="auto">Auto (System)</option>
+                                        <option value="light">Light</option>
+                                        <option value="dark">Dark</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Notifications</h3>
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <label>Practice Reminders</label>
+                                    <p>Get reminded to practice daily</p>
+                                </div>
+                                <div class="setting-control">
+                                    <label class="toggle">
+                                        <input type="checkbox" id="notificationsToggle" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <label>Reminder Time</label>
+                                    <p>When to send practice reminders</p>
+                                </div>
+                                <div class="setting-control">
+                                    <input type="time" class="form-control" id="reminderTime" value="18:00">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>Voice Settings</h3>
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <label>Microphone</label>
+                                    <p>Select your microphone device</p>
+                                </div>
+                                <div class="setting-control">
+                                    <select class="form-control" id="microphoneSelect">
+                                        <option value="default">Default Microphone</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-label">
+                                    <label>Microphone Test</label>
+                                    <p>Test your microphone</p>
+                                </div>
+                                <div class="setting-control">
+                                    <button class="btn btn--outline" id="micTestBtn">
+                                        <i class="fas fa-microphone"></i>
+                                        <span>Test Microphone</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Page -->
+            <div class="page" id="helpPage">
+                <header class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Help & Support</h1>
+                        <p class="page-subtitle">Get help and learn how to use SpeakAI effectively</p>
+                    </div>
+                </header>
+                <div class="help-content">
+                    <div class="help-sections">
+                        <div class="help-card">
+                            <div class="help-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="help-content">
+                                <h3>Getting Started Guide</h3>
+                                <p>Learn the basics of using SpeakAI for confidence building</p>
+                                <button class="btn btn--outline">
+                                    <span>Watch Tutorial</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="help-content">
+                                <h3>Frequently Asked Questions</h3>
+                                <p>Find answers to common questions about SpeakAI</p>
+                                <button class="btn btn--outline" id="faqBtn">
+                                    <span>View FAQ</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="help-content">
+                                <h3>Contact Support</h3>
+                                <p>Get personalized help from our support team</p>
+                                <button class="btn btn--outline">
+                                    <span>Contact Us</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal hidden" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Demo Preview</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Interactive Demo Coming Soon</p>
+                    <p>Experience our AI-powered coaching system</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal hidden" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎉 Welcome to SpeakAI!</h3>
+                <button class="modal-close" id="successModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="success-content">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>Account Created Successfully!</h4>
+                    <p>You're all set to start your confidence journey. Let's begin with your first practice session!</p>
+                    <button class="btn btn--primary btn--full-width" id="getStartedBtn">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast hidden" id="toast">
+        <div class="toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="toast-message">
+                Welcome to SpeakAI! Your confidence journey starts here.
+            </div>
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
